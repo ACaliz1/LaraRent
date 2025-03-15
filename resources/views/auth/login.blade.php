@@ -43,6 +43,17 @@
                 ¿No tienes una cuenta? 
                 <a href="{{ route('register') }}" class="text-blue-400 hover:underline">Regístrate</a>
             </p>
+            <div class="flex my-6 relative z-10 justify-center">
+                <a href="{{ route('home') }}"
+                    class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12h18"></path>
+                        <path d="M9 5l-6 7 6 7"></path>
+                    </svg>
+                    Home
+                </a>
+            </div>
         </div>
     </div>
 @endsection
