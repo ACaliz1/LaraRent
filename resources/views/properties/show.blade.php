@@ -24,6 +24,53 @@
                 €{{ number_format($property->price, 2) }}</p>
         </div>
 
+        <div class="mt-8">
+            <h3 class="text-2xl font-semibold text-gray-900">Comentarios</h3>
+
+            @if ($property->comments->isEmpty())
+                <p class="text-gray-600 mt-2">No hay comentarios aún. Sé el primero en comentar.</p>
+            @else
+                <div class="mt-4 space-y-4">
+                    @foreach ($property->comments as $comment)
+                        <div class="bg-gray-100 p-4 rounded-lg shadow-sm">
+                            <p class="font-semibold">{{ $comment->user->name }}
+                                <span class="text-gray-500 text-sm">— {{ $comment->created_at->diffForHumans() }}</span>
+                            </p>
+                            <p class="text-gray-700 mt-1">{{ $comment->content }}</p>
+                            <p class="text-yellow-500">⭐ {{ $comment->rating }}/5</p>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
+            @auth
+                <form action="{{ route('comments.store', $property->id) }}" method="POST" class="mt-4">
+                    @csrf
+                    <textarea name="content"
+                        class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Escribe tu comentario..." required></textarea>
+
+                    <label class="block text-gray-700 font-semibold mt-2">Puntuación:</label>
+                    <select name="rating" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm">
+                        <option value="5">⭐ ⭐ ⭐ ⭐ ⭐ (5)</option>
+                        <option value="4">⭐ ⭐ ⭐ ⭐ (4)</option>
+                        <option value="3">⭐ ⭐ ⭐ (3)</option>
+                        <option value="2">⭐ ⭐ (2)</option>
+                        <option value="1">⭐ (1)</option>
+                    </select>
+
+                    <button type="submit"
+                        class="w-full flex justify-center items-center gap-2 px-6 py-3 mt-2 bg-blue-500 text-white rounded-lg font-medium transition transform hover:bg-blue-600 hover:shadow-lg hover:scale-105">
+                        Comentar
+                    </button>
+                </form>
+            @else
+                <p class="mt-4 text-gray-600"> <a href="{{ route('login') }}" class="text-blue-500 hover:underline">Inicia
+                        sesión</a> para dejar un comentario.</p>
+            @endauth
+        </div>
+
+
         <div class="mt-6 flex gap-4">
             @auth
                 @if (auth()->user()->hasRole('admin') || auth()->user()->id === $property->user_id)

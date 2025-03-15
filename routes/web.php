@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 // Página de inicio
@@ -22,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Rutas protegidas con permisos para "admin" o "user"
-    Route::middleware('can:create,App\Models\Property')->group(function () {
+    Route::middleware('can:create-property')->group(function () {        
         Route::get('/properties/create', [PropertyController::class, 'create'])->name('properties.create');
         Route::get('/myProperties', [PropertyController::class, 'myProperties'])->name('properties.my');        
         Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
@@ -37,6 +38,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/properties/{property}', [PropertyController::class, 'destroy'])->name('properties.destroy');
     });
 
+    Route::post('/properties/{property}/comments', [CommentController::class, 'store'])
+        ->name('comments.store');
 });
 
 // Rutas públicas (todos pueden ver las propiedades)
