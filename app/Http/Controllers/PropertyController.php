@@ -18,6 +18,12 @@ class PropertyController extends Controller
         return view('properties.index', compact('properties'));
     }
 
+    public function myProperties()
+    {
+        $properties = Property::where('user_id', auth()->id())->get();
+        return view('properties.myProperties', compact('properties'));
+    }
+    
     public function show(Property $property)
     {
         return view('properties.show', compact('property'));

@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     // Rutas protegidas con permisos para "admin" o "user"
     Route::middleware('can:create,App\Models\Property')->group(function () {
         Route::get('/properties/create', [PropertyController::class, 'create'])->name('properties.create');
+        Route::get('/myProperties', [PropertyController::class, 'myProperties'])->name('properties.my');        
         Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
     });
 
