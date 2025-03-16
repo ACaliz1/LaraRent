@@ -5,8 +5,8 @@
 @section('header', 'Detalles de la Propiedad')
 
 @section('content')
-    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6 border border-gray-200">
-        <a href="{{ route('properties.index') }}" class="flex items-center gap-2 text-blue-500 hover:underline mb-4">
+    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-12 m-8 border border-gray-200">
+        <a href="{{  url()->previous() }}" class="flex items-center gap-2 text-blue-500 hover:underline mb-4">
             ← Volver
         </a>
 

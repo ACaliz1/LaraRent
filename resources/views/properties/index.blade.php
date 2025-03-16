@@ -9,15 +9,20 @@
             style="background-image: url('{{ asset('images/back.png') }}');">
         </div>
 
-        <main class="w-full max-w-6xl bg-white p-6 rounded-md shadow-lg mt-16 relative z-10">
+        <main class="w-full max-w-6xl bg-white p-6 rounded-md shadow-lg mt-24 relative z-10">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-2xl font-semibold">Propiedades</h2>
                 @auth
                     @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('user'))
-                        <a href="{{ route('properties.create') }}"
-                            class="px-4 py-2 border border-blue-500 text-blue-500 font-medium rounded-md transition hover:bg-blue-500 hover:text-white">
-                            + Nueva Propiedad
-                        </a>
+                    <a href="{{ route('properties.create') }}"
+                    class="px-4 py-2 border border-blue-500 text-blue-500 font-medium rounded-md transition hover:bg-blue-500 hover:text-white flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14"></path>
+                        <path d="M5 12h14"></path>
+                    </svg>
+                    Nueva propiedad
+                </a>
                     @endif
                 @endauth
             </div>
@@ -110,7 +115,6 @@
         </main>
 
         <div class="flex gap-4 my-6 pb-10 relative z-10">
-            <!-- Botón Volver -->
             <a href="{{ url()->previous() }}"
                 class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-gray-700 to-gray-900 text-white font-medium shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
@@ -120,7 +124,6 @@
                 Volver
             </a>
         
-            <!-- Botón Inicio -->
             <a href="{{ route('home') }}"
                 class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"

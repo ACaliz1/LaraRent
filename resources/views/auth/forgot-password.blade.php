@@ -3,36 +3,46 @@
 @section('title', 'Recuperar Contraseña')
 
 @section('content')
-    <div class="min-h-screen flex items-center justify-center bg-gray-900 px-6">
-        <div class="w-full max-w-md bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
-            <h2 class="text-2xl font-semibold text-center text-white mb-6">Recuperar Contraseña</h2>
-            <p class="text-gray-400 text-sm text-center mb-4">
+    <div class="min-h-screen flex flex-col items-center justify-center p-72 bg-gray-100 text-gray-900 relative">
+        <div class="absolute inset-0 bg-cover bg-center opacity-60"
+            style="background-image: url('{{ asset('images/back.png') }}');">
+        </div>
+
+        <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-xl border border-gray-300 relative z-10">
+            <h2 class="text-3xl font-extrabold text-center text-gray-800 mb-6   ">Recuperar Contraseña</h2>
+
+            <p class="text-gray-600 text-sm text-center mb-4">
                 ¿Olvidaste tu contraseña? Introduce tu correo electrónico y te enviaremos un enlace para restablecerla.
             </p>
+
             @if (session('status'))
-                <div class="mb-4 text-green-400 text-center font-medium">
+                <div class="mb-4 text-green-600 text-center font-medium">
                     {{ session('status') }}
                 </div>
             @endif
+
             <form method="POST" action="{{ route('password.email') }}" class="space-y-5">
                 @csrf
                 <div>
-                    <label for="email" class="block text-gray-300 font-medium mb-1">Correo Electrónico</label>
+                    <label for="email" class="block text-gray-700 font-medium mb-1">Correo Electrónico</label>
                     <input id="email" type="email" name="email" :value="old('email')" required autofocus
-                        class="w-full p-3 border border-gray-600 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 text-white" />
+                        class="w-full p-3 border border-gray-300 bg-gray-50 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                     @error('email')
-                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
+
                 <button type="submit"
-                    class="w-full py-3 rounded-lg text-white font-semibold text-lg bg-gradient-to-r from-blue-600 to-indigo-500 shadow-md hover:scale-105 hover:shadow-xl transition">
+                    class="w-full px-6 py-3 border border-blue-500 text-blue-500 rounded-lg font-medium transition transform hover:bg-blue-500 hover:text-white hover:shadow-lg hover:scale-105">
                     Enviar Enlace de Recuperación
                 </button>
             </form>
-            <p class="mt-4 text-center text-gray-400 text-sm">
+
+            <p class="mt-4 text-center text-gray-600 text-sm">
                 ¿Recordaste tu contraseña? 
-                <a href="{{ route('login') }}" class="text-blue-400 hover:underline">Inicia sesión</a>
+                <a href="{{ route('login') }}" class="text-blue-600 hover:underline">Inicia sesión</a>
             </p>
+
             <div class="flex my-6 relative z-10 justify-center">
                 <a href="{{ route('home') }}"
                     class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">

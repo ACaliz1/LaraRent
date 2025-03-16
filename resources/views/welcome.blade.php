@@ -3,8 +3,7 @@
 @section('title', 'Bienvenido a LaraRent')
 
 @section('content')
-    <div class="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat"
-        style="background-image: url('{{ asset('images/back.png') }}');">
+    <div class="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat">
         
         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
 

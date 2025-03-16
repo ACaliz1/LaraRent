@@ -4,10 +4,7 @@
 
 @section('content')
 
-    <div class="relative w-full h-screen flex flex-col justify-center items-center text-white text-center"
-        style="background-image: url('{{ asset('images/back.png') }}'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-
+    <div class="relative p-8 w-full h-screen flex flex-col justify-center items-center text-white text-center bg-black bg-opacity-50">
         <div class="relative z-10">
             <h1 class="text-5xl font-bold tracking-tight">Encuentra o vende tu hogar con facilidad</h1>
             <p class="text-lg text-gray-300 mt-4">Explora las mejores propiedades y maximiza el valor de tu inversión.</p>
@@ -46,13 +43,13 @@
         </div>
     </section>
 
-    <section class="w-full py-24 bg-gray-900 text-white text-center">
+    <section class="w-full py-24 bg-black bg-opacity-50 text-white text-center">
         <div class="max-w-5xl mx-auto px-6">
             <h2 class="text-4xl font-bold mb-4">¿Listo para vender o alquilar tu propiedad?</h2>
             <p class="text-lg text-gray-300 mb-6">Publica tu propiedad con nosotros y llega a miles de compradores y arrendatarios.</p>
             
             <a href="{{ route('properties.create') }}"
-                class="px-10 py-4 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 text-white text-lg font-semibold shadow-lg transition hover:scale-105 hover:shadow-xl">
+                class="px-10 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-semibold shadow-lg transition hover:scale-105 hover:shadow-xl">
                 Publicar Ahora
             </a>
         </div>

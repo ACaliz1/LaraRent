@@ -3,46 +3,56 @@
 @section('title', 'Iniciar Sesión')
 
 @section('content')
-    <div class="min-h-screen flex items-center justify-center bg-gray-900 px-6">
-        <div class="w-full max-w-md bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-700">
-            <h2 class="text-3xl font-semibold text-center text-white mb-6">Bienvenido de nuevo</h2>
-            <form method="POST" action="{{ route('login') }}" class="space-y-5">
+    <div class="min-h-screen flex flex-col items-center justify-center p-60 bg-gray-100 text-gray-900 relative">
+        <div class="absolute inset-0 bg-cover bg-center opacity-60"
+            style="background-image: url('{{ asset('images/back.png') }}');">
+        </div>
+
+        <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-xl border border-gray-300 relative z-10">
+            <h2 class="text-3xl font-extrabold text-center text-gray-800 mb-6">Bienvenido de nuevo</h2>
+
+            <form method="POST" action="{{ route('login') }}" class="space-y-6">
                 @csrf
                 <div>
-                    <label for="email" class="block text-gray-300 font-medium mb-1">Correo Electrónico</label>
+                    <label for="email" class="block text-gray-700 font-medium mb-1">Correo Electrónico</label>
                     <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username"
-                        class="w-full p-3 border border-gray-600 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 text-white" />
+                        class="w-full p-3 border border-gray-300 bg-gray-50 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                     @error('email')
-                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
+
                 <div>
-                    <label for="password" class="block text-gray-300 font-medium mb-1">Contraseña</label>
+                    <label for="password" class="block text-gray-700 font-medium mb-1">Contraseña</label>
                     <input id="password" type="password" name="password" required autocomplete="current-password"
-                        class="w-full p-3 border border-gray-600 bg-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 text-white" />
+                        class="w-full p-3 border border-gray-300 bg-gray-50 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
                     @error('password')
-                        <span class="text-red-400 text-sm">{{ $message }}</span>
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="flex items-center justify-between text-gray-300">
+
+                <div class="flex items-center justify-between text-gray-600">
                     <label for="remember_me" class="flex items-center text-sm">
                         <input id="remember_me" type="checkbox" class="mr-2 rounded border-gray-500 text-indigo-400 focus:ring-indigo-500" name="remember">
                         Recordarme
                     </label>
                     
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" class="text-sm text-blue-400 hover:underline">¿Olvidaste tu contraseña?</a>
+                        <a href="{{ route('password.request') }}" class="text-sm text-blue-600 hover:underline">¿Olvidaste tu contraseña?</a>
                     @endif
                 </div>
+
                 <button type="submit"
-                    class="w-full py-3 rounded-lg text-white font-semibold text-lg bg-gradient-to-r from-blue-600 to-indigo-500 shadow-md hover:scale-105 hover:shadow-xl transition">
+                    class="w-full px-6 py-3 border border-blue-500 text-blue-500 rounded-lg font-medium transition transform hover:bg-blue-500 hover:text-white hover:shadow-lg hover:scale-105">
                     Iniciar Sesión
                 </button>
             </form>
-            <p class="mt-4 text-center text-gray-400 text-sm">
+
+            <p class="mt-4 text-center text-gray-600 text-sm">
                 ¿No tienes una cuenta? 
-                <a href="{{ route('register') }}" class="text-blue-400 hover:underline">Regístrate</a>
+                <a href="{{ route('register') }}" class="text-blue-600 hover:underline">Regístrate</a>
             </p>
+
             <div class="flex my-6 relative z-10 justify-center">
                 <a href="{{ route('home') }}"
                     class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">

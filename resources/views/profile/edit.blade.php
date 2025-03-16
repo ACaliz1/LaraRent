@@ -12,6 +12,18 @@
                 <h3 class="text-lg font-semibold">Última modificación en el perfil</h3>
                 <p class="text-md">{{ Auth::user()->updated_at->diffForHumans() }}</p>
             </div>
+
+            <div class="p-6 bg-white/80 border-l-4 border-green-500 shadow-md rounded-lg">
+                <h3 class="text-lg font-semibold">Role del usuario</h3>
+                <p class="text-md font-medium text-gray-800">
+                    <ul class="list-disc ml-4">
+                        @foreach(Auth::user()->roles as $role)
+                            <li>{{ $role->name }}</li>
+                        @endforeach
+                    </ul>
+                </p>
+                
+            </div>
             
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">

@@ -3,13 +3,16 @@
 @section('title', 'Crear Propiedad')
 
 @section('content')
-    <div class="min-h-screen flex flex-col items-center p-6 bg-gray-100 text-gray-900 relative">
+    <div class="min-h-screen flex flex-col items-center p-28 bg-gray-100 text-gray-900 relative">
 
         <div class="absolute inset-0 bg-cover bg-center opacity-60" 
             style="background-image: url('{{ asset('images/back.png') }}');">
         </div>
 
         <div class="max-w-4xl mx-auto mt-16 bg-white p-10 rounded-xl shadow-xl border border-gray-200 relative z-10">
+            <a href="{{  url()->previous() }}" class="flex items-center gap-2 text-blue-500 hover:underline mb-4">
+                ← Volver
+            </a>
             <h2 class="text-4xl font-extrabold text-gray-800 mb-6">Nueva Propiedad</h2>
 
             <form action="{{ route('properties.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
@@ -80,7 +83,7 @@
                 </div>
 
                 <div class="flex gap-4 mt-6">
-                    <a href="{{ route('properties.index') }}"
+                    <a href="{{ url()->previous() }}"
                         class="w-1/2 flex items-center justify-center gap-2 px-6 py-3 border border-gray-500 text-gray-600 rounded-lg font-medium transition transform hover:bg-gray-500 hover:text-white hover:shadow-lg hover:scale-105">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

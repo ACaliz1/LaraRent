@@ -10,6 +10,9 @@
         </div>
 
         <div class="max-w-4xl mx-auto bg-white p-10 rounded-xl shadow-xl border border-gray-200 relative z-10 my-16">
+            <a href="{{  url()->previous() }}" class="flex items-center gap-2 text-blue-500 hover:underline mb-4">
+                ← Volver
+            </a>
             <h2 class="text-4xl font-extrabold text-gray-800 mb-6">Editar Propiedad</h2>
 
             <form action="{{ route('properties.update', $property) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
@@ -99,7 +102,7 @@
                     </a>
 
                     <button type="submit"
-                        class="w-1/2 flex items-center justify-center gap-2 px-6 py-3 border border-blue-500 text-blue-500 rounded-lg font-medium transition transform hover:bg-blue-500 hover:text-white hover:shadow-lg hover:scale-105">
+                        class="w-1/2 flex items-center justify-center gap-2 px-6 py-3 border  border-yellow-500 text-yellow-500 rounded-lg font-medium transition transform  hover:bg-yellow-500 hover:text-white hover:shadow-lg hover:scale-105">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 5v14"></path>

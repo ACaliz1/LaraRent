@@ -5,11 +5,10 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{ route('home') }}">
+                        <p class="text-2xl font-bold text-blue-400 px-4 py-2 rounded-lg inline-block">LaraRent</p>
                     </a>
                 </div>
-
                 <!-- Navigation Links -->
                 @auth
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -18,7 +17,13 @@
                         </x-nav-link>
                         <x-nav-link :href="route('properties.my')" :active="request()->routeIs('properties.my')">
                             {{ __('Mis Propiedades') }}
-                        </x-nav-link>                    
+                        </x-nav-link>
+
+                        @if(Auth::user() && Auth::user()->hasRole('admin'))
+                            <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                                {{ __('Administración de Usuarios') }}
+                            </x-nav-link>
+                        @endif
                     </div>
                 @endauth
             </div>

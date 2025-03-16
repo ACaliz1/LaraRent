@@ -3,8 +3,7 @@
 @section('title', 'Mis Propiedades')
 
 @section('content')
-    <div class="min-h-screen flex flex-col items-center p-6 bg-gray-100 text-gray-900 relative">
-
+    <div class="min-h-screen flex flex-col items-center p-48 bg-gray-100 text-gray-900 relative">
         <div class="absolute inset-0 bg-cover bg-center opacity-60"
             style="background-image: url('{{ asset('images/back.png') }}');">
         </div>
@@ -12,6 +11,15 @@
         <main class="w-full max-w-6xl bg-white p-6 rounded-md shadow-lg mt-16 relative z-10">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-2xl font-semibold">Mis Propiedades</h2>
+                <a href="{{ route('properties.create') }}"
+                    class="px-4 py-2 border border-blue-500 text-blue-500 font-medium rounded-md transition hover:bg-blue-500 hover:text-white flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14"></path>
+                        <path d="M5 12h14"></path>
+                    </svg>
+                    Nueva Propiedad
+                </a>
             </div>
 
             @if ($properties->count())
@@ -37,13 +45,11 @@
                                             <span class="text-gray-500">Sin imagen</span>
                                         @endif
                                     </td>
-
                                     <td class="p-3">{{ $property->title }}</td>
                                     <td class="p-3">{{ $property->location }}</td>
                                     <td class="p-3 font-semibold text-green-600">
                                         €{{ number_format($property->price, 2) }}
                                     </td>
-
                                     <td class="p-3 text-center">
                                         <div class="flex items-center justify-center gap-2">
                                             <a href="{{ route('properties.show', $property) }}"
@@ -120,6 +126,5 @@
                 Inicio
             </a>
         </div>
-        
     </div>
 @endsection
