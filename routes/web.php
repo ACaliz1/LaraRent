@@ -8,14 +8,14 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 // Página de inicio
+/* Route::get('/', function () {
+    return view('welcome');
+})->name('home'); */
+
+// Dashboard (solo accesible para usuarios autenticados y verificados)
 Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
-
-/* // Dashboard (solo accesible para usuarios autenticados y verificados)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard'); */
 
 // Administración usuarios only admin
 Route::middleware(['auth', 'admin'])->group(function () {
