@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Models\Property;
 use App\Policies\PropertyPolicy;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
+
         Gate::policy(Property::class, PropertyPolicy::class);
-/*         Gate::define('create-property', [PropertyPolicy::class, 'create']);
- */    }
+    }
 }
