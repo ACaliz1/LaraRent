@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a LaraRent')
+@section('title', 'LaraRent')
 
 @section('content')
     <div class="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat">
