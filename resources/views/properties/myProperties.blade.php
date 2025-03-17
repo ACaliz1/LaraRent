@@ -54,7 +54,7 @@
                                 <tr class="border-b border-gray-300 hover:bg-gray-100 transition text-center">
                                     <td class="p-3">
                                         @if ($property->image)
-                                        <img src="{{ Storage::url($property->image) }}" alt="Imagen de propiedad"
+                                        <img src="{{ url('storage/' . $property->image) }}" alt="Imagen de propiedad"
                                         class="w-16 h-16 object-cover rounded-md shadow">
                                         @else
                                             <span class="text-gray-500">Sin imagen</span>
