@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 // Página de inicio
 Route::get('/', function () {
     return view('dashboard');
-})->name('home');
+})->name('dashboard');
 
 /* // Dashboard (solo accesible para usuarios autenticados y verificados)
 Route::get('/dashboard', function () {
