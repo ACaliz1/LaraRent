@@ -3,6 +3,8 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Property>
@@ -18,6 +20,15 @@ class PropertyFactory extends Factory
             'location'    => $this->faker->address(),
             'type'        => $this->faker->randomElement(['venta', 'alquiler']),
             'user_id'     => User::exists() ? User::inRandomOrder()->first()->id : User::factory()->create()->id,
+            'image'       => 'properties/' . $this->getRandomBuildingImage(),
         ];
     }
+
+    private function getRandomBuildingImage(): string
+    {
+        $images = Storage::disk('public')->files('properties');
+    
+        return count($images) > 0 ? 'properties/' . basename($images[array_rand($images)]) : 'properties/default.jpg';
+    }
+    
 }
