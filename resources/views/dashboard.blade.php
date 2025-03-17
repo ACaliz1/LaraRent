@@ -7,7 +7,7 @@
 <div class="relative p-8 w-full h-screen flex flex-col justify-center items-center text-white text-center bg-cover bg-center bg-no-repeat"
         style="background-image: url('{{ asset('images/fondo2.webp') }}');">
 
-        <div class="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-md"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
         <div class="relative z-10">
             <h1 class="text-5xl font-extrabold tracking-tight drop-shadow-lg">
                 Encuentra o vende tu hogar con facilidad

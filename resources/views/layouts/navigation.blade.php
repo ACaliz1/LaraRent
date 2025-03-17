@@ -11,6 +11,11 @@
 
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:flex items-center">
+                @auth
+                    <x-nav-link :href="route('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                @endauth
                 <x-nav-link :href="route('properties.index')" :active="request()->routeIs('properties.index')">
                     {{ __('Propiedades') }}
                 </x-nav-link>
@@ -20,7 +25,7 @@
                         {{ __('Mis Propiedades') }}
                     </x-nav-link>
 
-                    @if(Auth::user() && Auth::user()->hasRole('admin'))
+                    @if (Auth::user() && Auth::user()->hasRole('admin'))
                         <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                             {{ __('Administrar Usuarios') }}
                         </x-nav-link>
@@ -33,10 +38,12 @@
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition">
+                            <button
+                                class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition">
                                 <div>{{ Auth::user()->name }}</div>
                                 <div class="ml-2">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                             clip-rule="evenodd" />
@@ -77,7 +84,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         @auth
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">

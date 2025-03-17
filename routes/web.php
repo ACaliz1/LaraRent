@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 // Página de inicio
 Route::get('/', function () {
-    return view('welcome');
+    return Auth::check() ? redirect()->route('dashboard') : view('welcome');
 })->name('home');
 
 // Dashboard (solo accesible para usuarios autenticados y verificados)
