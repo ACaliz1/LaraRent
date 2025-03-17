@@ -26,7 +26,7 @@ class PropertyFactory extends Factory
 
     private function getRandomBuildingImage(): string
     {
-        $directory = storage_path('app/public/properties');  // Ruta correcta en producción
+        $directory = storage_path('app/public/properties');
         if (!File::exists($directory)) {
             return 'properties/default.jpg';
         }
