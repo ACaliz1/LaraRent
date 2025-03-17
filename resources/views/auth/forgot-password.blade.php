@@ -3,10 +3,10 @@
 @section('title', 'Recuperar Contraseña')
 
 @section('content')
-    <div class="min-h-screen flex flex-col items-center justify-center p-72 bg-gray-100 text-gray-900 relative">
-        <div class="absolute inset-0 bg-cover bg-center opacity-60"
-            style="background-image: url('{{ asset('images/back.png') }}');">
-        </div>
+    <div class="relative min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat"
+        style="background-image: url('{{ asset('images/fondo2.webp') }}');">
+
+        <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
 
         <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-xl border border-gray-300 relative z-10">
             <h2 class="text-3xl font-extrabold text-center text-gray-800 mb-6   ">Recuperar Contraseña</h2>
@@ -39,7 +39,7 @@
             </form>
 
             <p class="mt-4 text-center text-gray-600 text-sm">
-                ¿Recordaste tu contraseña? 
+                ¿Recordaste tu contraseña?
                 <a href="{{ route('login') }}" class="text-blue-600 hover:underline">Inicia sesión</a>
             </p>
 

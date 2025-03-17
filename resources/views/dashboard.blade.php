@@ -4,10 +4,17 @@
 
 @section('content')
 
-    <div class="relative p-8 w-full h-screen flex flex-col justify-center items-center text-white text-center bg-black bg-opacity-50">
+<div class="relative p-8 w-full h-screen flex flex-col justify-center items-center text-white text-center bg-cover bg-center bg-no-repeat"
+        style="background-image: url('{{ asset('images/fondo2.webp') }}');">
+
+        <div class="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-md"></div>
         <div class="relative z-10">
-            <h1 class="text-5xl font-bold tracking-tight">Encuentra o vende tu hogar con facilidad</h1>
-            <p class="text-lg text-gray-300 mt-4">Explora las mejores propiedades y maximiza el valor de tu inversión.</p>
+            <h1 class="text-5xl font-extrabold tracking-tight drop-shadow-lg">
+                Encuentra o vende tu hogar con facilidad
+            </h1>
+            <p class="text-lg text-gray-300 mt-4 drop-shadow-md">
+                Explora las mejores propiedades y maximiza el valor de tu inversión.
+            </p>
             
             <div class="mt-6 flex gap-4 justify-center">
                 <a href="{{ route('properties.index') }}"
