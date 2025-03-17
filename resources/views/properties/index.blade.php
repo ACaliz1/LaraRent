@@ -10,19 +10,35 @@
         </div>
 
         <main class="w-full max-w-6xl bg-white p-6 rounded-md shadow-lg mt-24 relative z-10">
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex justify-between align-center items-center mb-4">
                 <h2 class="text-2xl font-semibold">Propiedades</h2>
+                <div class="flex align-center flex-wrap justify-center gap-8">
+                    <a href="{{ route('properties.index') }}"
+                        class="filter-btn py-2 px-4 rounded-md {{ request('type') ? 'bg-gray-300 text-gray-800' : 'bg-blue-600 text-white' }}">
+                        Ver Todas
+                    </a>
+                    <a href="{{ route('properties.index', ['type' => 'venta']) }}"
+                        class="filter-btn py-2 px-4 rounded-md {{ request('type') == 'venta' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-800' }}">
+                        Venta
+                    </a>
+                    <a href="{{ route('properties.index', ['type' => 'alquiler']) }}"
+                        class="filter-btn py-2 px-4 rounded-md {{ request('type') == 'alquiler' ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-800' }}">
+                        Alquiler
+                    </a>
+                </div>
+                
+
                 @auth
                     @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('user'))
-                    <a href="{{ route('properties.create') }}"
-                    class="px-4 py-2 border border-blue-500 text-blue-500 font-medium rounded-md transition hover:bg-blue-500 hover:text-white flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-                        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 5v14"></path>
-                        <path d="M5 12h14"></path>
-                    </svg>
-                    Nueva propiedad
-                </a>
+                        <a href="{{ route('properties.create') }}"
+                            class="px-4 py-2 border border-blue-500 text-blue-500 font-medium rounded-md transition hover:bg-blue-500 hover:text-white flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 5v14"></path>
+                                <path d="M5 12h14"></path>
+                            </svg>
+                            Nueva propiedad
+                        </a>
                     @endif
                 @endauth
             </div>
@@ -32,10 +48,11 @@
                     <table class="w-full border-collapse rounded-lg overflow-hidden shadow-sm">
                         <thead>
                             <tr class="bg-gray-200 text-left text-gray-700">
-                                <th class="p-3">Imagen</th>
-                                <th class="p-3">Título</th>
-                                <th class="p-3">Ubicación</th>
-                                <th class="p-3">Precio</th>
+                                <th class="p-3 text-center">Imagen</th>
+                                <th class="p-3 text-center">Título</th>
+                                <th class="p-3 text-center">Ubicación</th>
+                                <th class="p-3 text-center">Precio</th>
+                                <th class="p-3 text-center">Tipo</th>
                                 <th class="p-3 text-center">Acciones</th>
                             </tr>
                         </thead>
@@ -51,11 +68,12 @@
                                         @endif
                                     </td>
 
-                                    <td class="p-3">{{ $property->title }}</td>
-                                    <td class="p-3">{{ $property->location }}</td>
-                                    <td class="p-3 font-semibold text-green-600">
+                                    <td class="p-3 text-center">{{ ucfirst($property->title) }}</td>
+                                    <td class="p-3 text-center">{{ ucfirst($property->location) }}</td>
+                                    <td class="p-3 font-semibold text-green-600 text-center">
                                         €{{ number_format($property->price, 2) }}
                                     </td>
+                                    <td class="p-3 text-center">{{ ucfirst($property->type) }}</td>
 
                                     <td class="p-3 text-center">
                                         <div class="flex items-center justify-center gap-2">
@@ -114,7 +132,7 @@
             @endif
         </main>
 
-        <div class="flex gap-4 my-6 pb-10 relative z-10">
+        <div class="flex gap-4 my-6 pb-16 relative z-10">
             <a href="{{ url()->previous() }}"
                 class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-gray-700 to-gray-900 text-white font-medium shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
@@ -123,7 +141,7 @@
                 </svg>
                 Volver
             </a>
-        
+
             <a href="{{ route('home') }}"
                 class="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
@@ -134,6 +152,6 @@
                 Inicio
             </a>
         </div>
-        
+
     </div>
 @endsection

@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Gate::policy(Property::class, PropertyPolicy::class);
-        Gate::define('create-property', [PropertyPolicy::class, 'create']);
-    }
+/*         Gate::define('create-property', [PropertyPolicy::class, 'create']);
+ */    }
 }

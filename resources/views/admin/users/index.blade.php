@@ -27,7 +27,7 @@
                 <div class="overflow-x-auto">
                     <table class="w-full border-collapse rounded-lg overflow-hidden shadow-sm">
                         <thead>
-                            <tr class="bg-gray-200 text-left text-gray-700">
+                            <tr class="bg-gray-200 text-gray-700 text-center">
                                 <th class="p-3">Nombre</th>
                                 <th class="p-3">Email</th>
                                 <th class="p-3">Rol</th>
@@ -36,14 +36,14 @@
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
-                                <tr class="border-b border-gray-300 hover:bg-gray-100 transition">
-                                    <td class="p-3">{{ $user->name }}</td>
+                                <tr class="border-b border-gray-300 hover:bg-gray-100 transition text-center">
+                                    <td class="p-3">{{ ucfirst($user->name) }}</td>
                                     <td class="p-3">{{ $user->email }}</td>
                                     
                                     <td class="p-3">
                                         @if ($user->roles->isNotEmpty())
                                             @foreach ($user->roles as $role)
-                                                {{ $role->name }}
+                                                {{ ucfirst($role->name) }}
                                             @endforeach
                                         @else
                                             Sin Rol

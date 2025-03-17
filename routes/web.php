@@ -7,9 +7,6 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(function () {
-    Route::resource('users', UserController::class)->except(['show']);
-});
 // Página de inicio
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +17,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Administración usuarios only admin
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('admin/users', UserController::class)->except(['show']);
+});
+
 // Rutas protegidas por autenticación
 Route::middleware('auth')->group(function () {
 
@@ -28,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Rutas protegidas con permisos para "admin" o "user"
-    Route::middleware('can:create-property')->group(function () {        
+    Route::middleware('can:create,App\Models\Property')->group(function () {        
         Route::get('/properties/create', [PropertyController::class, 'create'])->name('properties.create');
         Route::get('/myProperties', [PropertyController::class, 'myProperties'])->name('properties.my');        
         Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');

@@ -12,11 +12,19 @@ class PropertyController extends Controller
 {
     use AuthorizesRequests;
 
-    public function index()
+    public function index(Request $request)
     {
-        $properties = Property::all();
+        $query = Property::query();
+    
+        if ($request->has('type') && in_array($request->type, ['venta', 'alquiler'])) {
+            $query->where('type', $request->type);
+        }
+    
+        $properties = $query->get();
+    
         return view('properties.index', compact('properties'));
     }
+    
 
     public function myProperties()
     {

@@ -10,6 +10,7 @@ class PropertyPolicy
     {
         return $user->roles()->whereIn('name', ['admin', 'user'])->exists();
     }
+    
 
     public function update(User $user, Property $property)
     {
