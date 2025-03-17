@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Property;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            UserSeeder::class,
-            PropertySeeder::class,
-            RoleSeeder::class,
-        ]);
+        // Primero, creamos los usuarios
+        $this->call(UserSeeder::class);
+
+        // Asegurar que al menos un usuario exista antes de crear propiedades
+        if (User::count() === 0) {
+            User::factory()->create();
+        }
+
+        // Luego, creamos las propiedades
+        $this->call(PropertySeeder::class);
+
+        // Finalmente, creamos roles
+        $this->call(RoleSeeder::class);
     }
-    
 }
