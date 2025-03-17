@@ -4,7 +4,8 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\File;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Property>
@@ -26,9 +27,11 @@ class PropertyFactory extends Factory
 
     private function getRandomBuildingImage(): string
     {
-        $images = Storage::disk('public')->files('properties');
+        $directory = public_path('storage/properties'); 
+        $images = File::files($directory); 
     
-        return count($images) > 0 ? 'properties/' . basename($images[array_rand($images)]) : 'properties/default.jpg';
+        return count($images) > 0 ? 'properties/' . $images[array_rand($images)]->getFilename() : 'properties/default.jpg';
     }
+    
     
 }
