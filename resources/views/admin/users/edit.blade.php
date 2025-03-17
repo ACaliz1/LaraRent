@@ -9,6 +9,9 @@
         </div>
 
         <div class="max-w-4xl mx-auto mt-16 bg-white p-10 rounded-xl shadow-xl border border-gray-200 relative z-10">
+            <a href="{{  url()->previous() }}" class="flex items-center gap-2 text-blue-500 hover:underline mb-4">
+                ← Volver
+            </a>
             <h2 class="text-4xl font-extrabold text-gray-800 mb-6">Editar Usuario</h2>
 
             <form action="{{ route('users.update', $user) }}" method="POST" class="space-y-6">
