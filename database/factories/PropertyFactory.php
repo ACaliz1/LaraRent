@@ -3,9 +3,8 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
-
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Property>
@@ -21,17 +20,18 @@ class PropertyFactory extends Factory
             'location'    => $this->faker->address(),
             'type'        => $this->faker->randomElement(['venta', 'alquiler']),
             'user_id'     => User::exists() ? User::inRandomOrder()->first()->id : User::factory()->create()->id,
-            'image'       => 'properties/' . $this->getRandomBuildingImage(),
+            'image'       => $this->getRandomBuildingImage(),
         ];
     }
 
     private function getRandomBuildingImage(): string
     {
-        $directory = public_path('storage/properties'); 
-        $images = File::files($directory); 
-    
+        $directory = storage_path('app/public/properties');  // Ruta correcta en producción
+        if (!File::exists($directory)) {
+            return 'properties/default.jpg';
+        }
+
+        $images = File::files($directory);
         return count($images) > 0 ? 'properties/' . $images[array_rand($images)]->getFilename() : 'properties/default.jpg';
     }
-    
-    
 }
