@@ -5,28 +5,28 @@
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
                 <a href="{{ route('home') }}">
-                    <p class="text-2xl font-bold text-blue-600 px-4 py-2 rounded-lg">LaraRent</p>
+                    <p class="text-4xl font-bold text-blue-600 px-4 py-2 rounded-lg">LaraRent</p>
                 </a>
             </div>
 
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:flex items-center">
                 @auth
-                    <x-nav-link :href="route('dashboard')">
+                    <x-nav-link class="!text-lg" :href="route('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 @endauth
-                <x-nav-link :href="route('properties.index')" :active="request()->routeIs('properties.index')">
+                <x-nav-link class="!text-lg" :href="route('properties.index')" :active="request()->routeIs('properties.index')">
                     {{ __('Propiedades') }}
                 </x-nav-link>
 
                 @auth
-                    <x-nav-link :href="route('properties.my')" :active="request()->routeIs('properties.my')">
+                    <x-nav-link class="!text-lg" :href="route('properties.my')" :active="request()->routeIs('properties.my')">
                         {{ __('Mis Propiedades') }}
                     </x-nav-link>
 
                     @if (Auth::user() && Auth::user()->hasRole('admin'))
-                        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        <x-nav-link class="!text-lg" :href="route('users.index')" :active="request()->routeIs('users.index')">
                             {{ __('Administrar Usuarios') }}
                         </x-nav-link>
                     @endif
@@ -39,7 +39,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition">
+                                class="inline-flex items-center px-4 py-2 border border-gray-300 !text-lg font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 transition">
                                 <div>{{ Auth::user()->name }}</div>
                                 <div class="ml-2">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -53,13 +53,13 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link class="!text-lg" :href="route('profile.edit')">
                                 {{ __('Perfil') }}
                             </x-dropdown-link>
 
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <x-dropdown-link :href="route('logout')"
+                                <x-dropdown-link class="!text-lg" :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                     {{ __('Cerrar sesión') }}
@@ -70,11 +70,11 @@
                 @else
                     <div class="flex items-center space-x-4">
                         <a href="{{ route('login') }}"
-                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md transition hover:bg-gray-200">
+                            class="px-4 py-2 !text-md font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md transition hover:bg-gray-200">
                             {{ __('Iniciar sesión') }}
                         </a>
                         <a href="{{ route('register') }}"
-                            class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md transition hover:bg-blue-700">
+                            class="px-4 py-2 !text-md font-medium text-white bg-blue-600 rounded-md transition hover:bg-blue-700">
                             {{ __('Registrarse') }}
                         </a>
                     </div>
@@ -117,11 +117,11 @@
             <div class="pt-2 pb-3 border-t border-gray-200">
                 <div class="px-4 space-y-1">
                     <a href="{{ route('login') }}"
-                        class="block px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-md transition hover:bg-gray-200">
+                        class="block px-4 py-2 !text-md text-gray-700 bg-gray-100 rounded-md transition hover:bg-gray-200">
                         {{ __('Iniciar sesión') }}
                     </a>
                     <a href="{{ route('register') }}"
-                        class="block px-4 py-2 text-sm text-white bg-blue-600 rounded-md transition hover:bg-blue-700">
+                        class="block px-4 py-2 !text-md text-white bg-blue-600 rounded-md transition hover:bg-blue-700">
                         {{ __('Registrarse') }}
                     </a>
                 </div>
