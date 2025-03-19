@@ -60,7 +60,7 @@ class PropertyController extends Controller
         $data['user_id'] = auth()->id();
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('properties', 'public');
+            $data['image'] = $request->file('image')->store('public/properties');
         }
 
         Property::create($data);
